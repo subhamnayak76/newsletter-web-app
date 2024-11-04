@@ -7,7 +7,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const API_URL = 'http://localhost:8000/api';
 
 const BlogList = () => {
   interface Blog {
@@ -30,7 +29,7 @@ const BlogList = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch(`${API_URL}/blogs`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/blogs`);
       if (response.ok) {
         const data: Blog[] = await response.json();
         setBlogs(data);

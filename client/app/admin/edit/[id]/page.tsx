@@ -10,6 +10,7 @@ import { Loader2 } from 'lucide-react';
 
 const API_URL = 'http://localhost:3000/api';
 
+export const runtime = 'edge'
 const EditBlog = () => {
   const router = useRouter();
   const { id } = router.query;

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
+import exp from 'constants';
 
 interface Blog {
   _id: string;
@@ -14,7 +15,7 @@ interface Blog {
   publishDate: string;
   tags: string[];
 }
-
+export const runtime = 'edge'
 export default function BlogDetail() {
   const params = useParams();
   const [blog, setBlog] = useState<Blog | null>(null);
@@ -24,7 +25,7 @@ export default function BlogDetail() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/blogs/${params.id}`);
+        const response = await fetch(`${process.env.BLOG_API}/${params.id}`);
         if (!response.ok) {
           throw new Error('Blog not found');
         }

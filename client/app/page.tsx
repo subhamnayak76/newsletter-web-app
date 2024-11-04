@@ -4,14 +4,15 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const API_URL = 'http://localhost:8000/api';
 
 const HomePage = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState({ type: '', text: '' });
   const [isLoading, setIsLoading] = useState(false);
-
+ console.log(process.env.BACKEND_API)
   const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
@@ -21,7 +22,7 @@ const HomePage = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/subscribe`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

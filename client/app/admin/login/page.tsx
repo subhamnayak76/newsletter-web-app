@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Loader2, Lock } from 'lucide-react';
 
-const API_URL = 'http://localhost:8000/api';
+
 
 const AdminLogin = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const AdminLogin = () => {
     setError(null);
 
     try {
-      const response = await fetch(`${API_URL}/admin/login`, {
+      const response = await fetch(`${process.env.BACKEND_API}/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -32,7 +32,7 @@ const CreateBlog = () => {
         return;
       }
 
-      const response = await fetch('http://localhost:8000/api/blogs', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/blogs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
