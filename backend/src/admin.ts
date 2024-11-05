@@ -34,7 +34,7 @@ async function initializeAdmin() {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'defaultAdminPass', 10);
+    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || '', 10);
 
     // Create admin user
     const admin = new Admin({
